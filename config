@@ -12,13 +12,15 @@
 
 	"layer": "top",
 	"position": "top",
-	"height": 26,
+	"height": 28,
 
 	"modules-left": [
         "custom/poweroff",
 		"custom/arrow-poweroff",
         "idle_inhibitor",
 		"custom/arrow-idle",
+		"custom/notification",
+		"custom/arrow-notification",
 		"custom/workspace-spacer",
 		"sway/workspaces",
 		"custom/arrow-workspace"
@@ -37,8 +39,8 @@
 		"memory",
 		"custom/arrow-audio",
 		"pulseaudio",
-		"custom/arrow-temp",
-		"temperature",
+		// "custom/arrow-temp",
+		// "temperature",
 		// "custom/arrow-network",
 		// "network",
 		"custom/arrow-tray",
@@ -96,7 +98,7 @@
 	},
 
 	"cpu": {
-		"interval": 5,
+		"interval": 2,
 		"tooltip": false,
 		// "format": " {usage}%", // Icon: microchip
 		"format": "CPU {usage}%", // Icon: microchip
@@ -152,20 +154,22 @@
 		"disable-scroll": false,
 		"format": "{name}:{icon}",
         "format-icons": {
-            "1": "Main1",
-            "2": "Main2",
-            "3": "Slack",
-            "4": "e-mail",
-            "5": "Biscuit",
-            "6": "Logging",
-            "7": "Browser1",
-            "8": "Browser2",
-            "9": "Music",
-            "10": "Video",
-            "11": "Remote",
-			"urgent": "",
-			"focused": "",
-			"default": ""
+		"1": "WORK1",
+		"2": "Browser",
+		"3": "Slack",
+		"4": "WORK2",
+		"5": "WORK3",
+		"6": "Log",
+		"7": "Mail",
+		"8": "SNS",
+		"9": "Log",
+		"10": "Music",
+		"11": "Remote",
+	    "12": "VM",
+	    "13": "Video",
+	    "urgent": "",
+	    "focused": "",
+	    "default": ""
 		}
 	},
 
@@ -174,7 +178,7 @@
 		// "format": "{icon} {volume}%",
 		"format": "VOL {volume}",
 		"format-bluetooth": "{icon} {volume}%",
-		"format-muted": " MUTED ",
+		"format-muted": "MUTE",
 		"format-icons": {
 			"headphones": "",
 			"handsfree": "",
@@ -203,6 +207,23 @@
 		"tooltip": false
 	},
 
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+		  "notification": "<span foreground='red'><sup></sup></span>",
+		  "none": "",
+		  "dnd-notification": "<span foreground='red'><sup></sup></span>",
+		  "dnd-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	  },
+
 	"custom/alsa": {
 		"exec": "amixer get Master | sed -nre 's/.*\\[off\\].*/ muted/p; s/.*\\[(.*%)\\].*/ \\1/p'",
 		"on-click": "amixer set Master toggle; pkill -x -RTMIN+11 waybar",
@@ -215,8 +236,8 @@
 
     "custom/poweroff": {
         "tooltip": false,
-        // "format": "⏻",
-        "format": " EXIT",
+        "format": " ⏻ ",
+        // "format": " EXIT",
         "on-click": "nwgbar"
     },
 
@@ -288,6 +309,10 @@
 		"tooltip": false
 	},
 	"custom/arrow-idle": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/arrow-notification": {
 		"format": "",
 		"tooltip": false
 	},

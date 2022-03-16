@@ -119,7 +119,8 @@
 @define-color rcolor5 #1E2535;
 
 @define-color warning #fabd2f;
-@define-color critical #cc241d;
+/* @define-color critical #cc241d; red */
+@define-color critical #ff7f50;
 
 @define-color cpu @rcolor1;
 @define-color cputext @dark;
@@ -169,6 +170,7 @@
 #pulseaudio,
 #temperature,
 #custom-alsa,
+#custom-notification,
 #sndio,
 #tray {
 	padding-left: 10px;
@@ -179,7 +181,7 @@
 
 /* Each module that should blink */
 #mode,
-#memory,
+#memory-noblink,
 #temperature,
 #battery {
 	animation-timing-function: linear;
@@ -229,6 +231,7 @@
 #custom-arrow-date,#custom-arrow-time,
 #custom-arrow-left,
 #custom-arrow-poweroff, #custom-arrow-idle,
+#custom-arrow-notification,
 #custom-arrow-workspace
 {
 	font-size: 28px;
@@ -270,6 +273,22 @@
 
 #custom-arrow-idle {
 	color: @idle;
+	background: @memory;
+}
+
+#custom-idle-spacer {
+	background: @workspaces;
+}
+
+/** swaynotificationcenter (swaync) */
+#custom-notification {
+	font-family: "NotoSansMono Nerd Font";
+	color: @memorytext;
+	background: @memory;
+}
+
+#custom-arrow-notification {
+	color: @memory;
 	background: @workspaces;
 }
 
@@ -388,7 +407,7 @@
 
 #custom-arrow-tray {
 	color: @tray;
-	background: @temp;
+	background: @sound;
 }
 #tray {
 	background: @barbgcolor;
@@ -399,6 +418,7 @@
 	color: @date;
 	background: @tray;
 }
+
 #clock.date {
 	background: @date;
 	color: @datetext;
