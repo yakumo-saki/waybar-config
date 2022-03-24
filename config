@@ -19,20 +19,22 @@
 		"custom/arrow-poweroff",
         "idle_inhibitor",
 		"custom/arrow-idle",
-		"custom/notification",
-		"custom/arrow-notification",
 		"custom/workspace-spacer",
 		"sway/workspaces",
 		"custom/arrow-workspace"
 	],
 
+
 	"modules-center": [
-		"sway/mode"
+		"sway/mode",
+		"clock#time"
 	],
 
 	// "sway/language",
 	// "custom/arrow7",
 	"modules-right": [
+		"custom/arrow-notification",
+		"custom/notification",
 		"custom/arrow-cpu",
 		"cpu",
 		"custom/arrow-mem",
@@ -47,9 +49,10 @@
 		"tray",
 		"custom/arrow-date",
 		"clock#date",
-		"custom/arrow-time",
-		"clock#time"
 	],
+
+	// "custom/arrow-time",
+
 
 	// -------------------------------------------------------------------------
 	// Modules
@@ -57,10 +60,17 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            // "activated": "",
-            // "deactivated": ""
-            "activated":   " NO-LCK ",
-            "deactivated": " A-LOCK "
+            // "activated": "",  // eye with slash
+            // "deactivated": "" // eye
+
+			"activated": "🔏",
+            "deactivated": "⌘"
+			
+            // "activated": "🔏",
+            // "deactivated": "🔒"
+			
+            // "activated":   " NO-LCK ",
+            // "deactivated": " A-LOCK "
         }
     },
 
@@ -93,7 +103,7 @@
         "locale": "ja_JP.UTF-8",
 		"interval": 60,
 		"format": "{:%Y/%m/%d %a}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+        "tooltip-format": "<big>{:%Y年 %B}</big>\n<tt><big>{calendar}</big></tt>",
 		"tooltip": true
 	},
 
@@ -154,14 +164,14 @@
 		"disable-scroll": false,
 		"format": "{name}:{icon}",
         "format-icons": {
-		"1": "WORK1",
-		"2": "Browser",
+		"1": "WORK",
+		"2": "WORK",
 		"3": "Slack",
-		"4": "WORK2",
-		"5": "WORK3",
-		"6": "Log",
+		"4": "Browser",
+		"5": "WORK",
+		"6": "SNS",
 		"7": "Mail",
-		"8": "SNS",
+		"8": "Task",
 		"9": "Log",
 		"10": "Music",
 		"11": "Remote",
@@ -192,7 +202,7 @@
 	},
 
 	"temperature": {
-		"critical-threshold": 90,
+		"critical-threshold": 70,
 		"interval": 5,
 		//"format": "{icon} {temperatureC}°C",
 		// "format": "{icon} {temperatureC}°",
@@ -212,7 +222,8 @@
 		"format": "{icon}",
 		"format-icons": {
 		  "notification": "<span foreground='red'><sup></sup></span>",
-		  "none": "",
+		//   "none": "",
+		  "none": "",
 		  "dnd-notification": "<span foreground='red'><sup></sup></span>",
 		  "dnd-none": ""
 		},
@@ -313,7 +324,7 @@
 		"tooltip": false
 	},
 	"custom/arrow-notification": {
-		"format": "",
+		"format": "",
 		"tooltip": false
 	},
 	"custom/workspace-spacer": {

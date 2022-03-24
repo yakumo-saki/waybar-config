@@ -86,7 +86,8 @@
 
 
 /* global */
-@define-color barbgcolor #E0E0D4;
+@define-color barbgcolor #D5D5E4;
+/* @define-color barbgcolor #B0B0B4; */
 @define-color light #ffffff;
 @define-color dark #000000;
 
@@ -96,7 +97,7 @@
 
 /* left */
 @define-color lcolor1 #AAABBF;
-@define-color lcolor2 #F2F2F2;
+@define-color lcolor2 #D4D4D9;
 @define-color lcolor3 #020F59;
 @define-color lcolor4 #03258C;
 @define-color lcolor5 #044BD9;
@@ -105,14 +106,18 @@
 @define-color powertext @dark;
 @define-color idle @lcolor3;
 @define-color idletext @light;
-@define-color workspaces @lcolor2;
+/* @define-color workspaces @lcolor2; */
+@define-color workspaces @rcolor3;
 @define-color workspacesfocused #50ABBF;
-@define-color workspacesfocusedtext @dark;
+/* @define-color workspacesfocusedtext @dark; */
+@define-color workspacesfocusedtext @light;
+@define-color workspacestext @light;
 @define-color workspacesurgent @lcolor5;
 
 
 /* right */
-@define-color rcolor1 #aaadad;
+@define-color rcolor1a #aaadad;
+@define-color rcolor1 #B0B0B4;
 @define-color rcolor2 #909A9C;
 @define-color rcolor3 #486177;
 @define-color rcolor4 #243C58;
@@ -154,8 +159,10 @@
 #waybar {
 	background: @barbgcolor;
 	color: @light;
-	font-family: Terminus, Siji;
-	font-size: 14pt;
+	/* font-family: Terminus, Siji;  */
+	/* font-size: 14pt; */
+	font-family: "LiterationMono Nerd Font Mono";
+	font-size: 15pt;
 	/*font-weight: bold;*/
 }
 
@@ -234,7 +241,7 @@
 #custom-arrow-notification,
 #custom-arrow-workspace
 {
-	font-size: 28px;
+	font-size: 24px;
 	margin: 0;
 	padding: 0;
 }
@@ -257,6 +264,11 @@
 
 #idle_inhibitor {
 	color: @idletext;
+	/* padding-top: 3px; */
+	/* font-size: 18pt; */
+	padding-top: 0;
+	padding-bottom: 0;
+	min-width: 35px;
 }
 
 #idle_inhibitor.activated {
@@ -289,7 +301,7 @@
 
 #custom-arrow-notification {
 	color: @memory;
-	background: @workspaces;
+	background: @lcolor2;
 }
 
 #custom-workspace-spacer {
@@ -299,10 +311,12 @@
 /* Workspaces stuff */
 #workspaces button {
 	/*font-weight: bold;*/
-	padding-left: 4px;
-	padding-right: 4px;
-	color: @dark;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: @workspacestext;
 	background: @workspaces;
+	font-family: Terminus, Siji;
+	font-size: 14pt;
 }
 
 #custom-arrow-workspace {
@@ -313,7 +327,8 @@
 #workspaces button { 
 	padding-right: 15px;
 	padding-top: 5px;
-	border-width: 5px;
+	padding-bottom: 0px;
+	border-width: 3px;
 	border-bottom-style: solid;
 	border-bottom-color: transparent;
 }
@@ -322,7 +337,7 @@
 	padding-left: 15px;
 	padding-right: 15px;
 	color: @workspacesfocusedtext;
-	border-width: 5px;
+	border-width: 3px;
 	border-bottom-style: solid;
 	border-bottom-color: @workspacesfocused;
 }
@@ -350,13 +365,14 @@
 
 #custom-arrow-cpu {
 	color: @cpu;
-	background: @barbgcolor;
+	background: @memory;
 }
 
 #cpu {
 	background: @cpu;
 	color: @cputext;
-	min-width: 70px;
+	padding-top: 3px;
+	min-width: 90px;
 }
 
 #custom-arrow-mem {
@@ -366,6 +382,7 @@
 #memory {
 	background: @memory;
 	color: @memorytext;
+	padding-top: 3px;
 }
 
 #custom-arrow-audio {
@@ -377,6 +394,7 @@
 #sndio {
 	background: @sound;
 	color: @soundtext;
+	padding-top: 3px;
 }
 #pulseaudio.muted {
 	background: @workspacesurgent;
@@ -432,7 +450,8 @@
 #clock.time {
 	background: @time;
 	color: @timetext;
-	font-size: 14pt;
+	font-size: 15pt;
+	padding-top: 4px;
 }
 
 #language {
